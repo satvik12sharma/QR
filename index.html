@@ -54,7 +54,13 @@
     margin-top: 10px;
     animation: heartbeat 1s infinite;
 }
-
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100vh); opacity: 0; }
+}
+h1 {
+  text-shadow: 0 0 10px white, 0 0 20px pink;
+}
 @keyframes heartbeat {
     0%, 100% {
         transform: scale(1);
@@ -85,12 +91,38 @@
 </style>
 
 </head>
+<script>
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.innerHTML = "❤️";
+  heart.style.position = "fixed";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.bottom = "0";
+  heart.style.fontSize = "20px";
+  heart.style.animation = "floatUp 4s linear";
+  document.body.appendChild(heart);
 
+  setTimeout(() => heart.remove(), 4000);
+}, 500);
+</script>
+<script>
+let text = "Every moment with you feels like magic ✨";
+let i = 0;
+
+function typeEffect() {
+  if (i < text.length) {
+    document.getElementById("message").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 50);
+  }
+}
+typeEffect();
+</script>
 <body>
 
 <div class="card">
     <div class="heart">❤️</div>
-
+<p id="message"></p>
     <h1>I Love You Sadhika</h1>
 
     <!-- ADD YOUR IMAGE HERE -->
@@ -103,7 +135,19 @@
         No matter where life takes us,<br>
         I will always hold your hand and choose you again and again ❤️<br><br>
         Forever yours.
-    </p>
+        </p>
+        <button onclick="showMessage()">Click me ❤️</button>
+
+<p id="hidden" style="display:none;">
+I love you till the moon and back my little princess 💖
+</p>
+
+<script>
+function showMessage() {
+  document.getElementById("hidden").style.display = "block";
+}
+</script>
+ 
 </div>
 
 </body>
