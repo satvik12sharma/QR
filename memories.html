@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Memories ❤️</title>
+
+<style>
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', cursive;
+
+    background: linear-gradient(-45deg,
+    #ff758c,
+    #ff7eb3,
+    #ff4d6d,
+    #ff8fa3);
+
+    background-size: 400% 400%;
+
+    animation: gradient 10s ease infinite;
+
+    min-height: 100vh;
+
+    overflow-y: auto;
+
+    color: white;
+
+    text-align: center;
+}
+
+@keyframes gradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+h1 {
+
+    margin-top: 20px;
+
+    font-size: 3em;
+
+    text-shadow:
+    0 0 10px white,
+    0 0 20px pink;
+}
+
+.gallery {
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 25px;
+
+    max-width: 1200px;
+
+    margin: 40px auto;
+}
+
+.photo-card {
+
+    background: rgba(255,255,255,0.15);
+
+    border-radius: 20px;
+
+    padding: 15px;
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.3);
+
+    transition: 0.4s;
+}
+
+.photo-card:hover {
+
+    transform: scale(1.05);
+}
+
+.photo-card img {
+
+    width: 100%;
+
+    border-radius: 15px;
+
+    height: 320px;
+
+    object-fit: cover;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.3);
+}
+
+.caption {
+
+    margin-top: 10px;
+
+    font-size: 1.1em;
+}
+
+@keyframes floatUp {
+
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+.back-btn {
+
+    padding: 12px 24px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: white;
+
+    color: #ff4d6d;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-bottom: 30px;
+
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+
+    transform: scale(1.08);
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Our Memories ❤️</h1>
+
+<button class="back-btn"
+onclick="window.location.href='index.html'">
+
+    Back ❤️
+
+</button>
+
+<div class="gallery">
+
+    <div class="photo-card">
+        <img src="pic1.jpg">
+        <div class="caption">Beautiful Memory ❤️</div>
+    </div>
+
+    <div class="photo-card">
+        <img src="pic2.jpg">
+        <div class="caption">Forever Together ✨</div>
+    </div>
+
+    <div class="photo-card">
+        <img src="pic3.jpg">
+        <div class="caption">My Happiness 💖</div>
+    </div>
+
+    <div class="photo-card">
+        <img src="pic4.jpg">
+        <div class="caption">Cute Moments 🥹</div>
+    </div>
+
+    <div class="photo-card">
+        <img src="pic5.jpg">
+        <div class="caption">You & Me ❤️</div>
+    </div>
+
+    <div class="photo-card">
+        <img src="pic6.jpg">
+        <div class="caption">Endless Love 💕</div>
+    </div>
+
+    <div class="photo-card">
+        <img src="pic7.jpg">
+        <div class="caption">My Favorite Person 🌸</div>
+    </div>
+
+    <div class="photo-card">
+        <img src="pic8.jpg">
+        <div class="caption">Always Yours ❤️</div>
+    </div>
+
+</div>
+
+<script>
+
+// floating hearts
+
+setInterval(() => {
+
+    let heart =
+    document.createElement("div");
+
+    heart.innerHTML = "❤️";
+
+    heart.style.position = "fixed";
+
+    heart.style.left =
+    Math.random() * 100 + "vw";
+
+    heart.style.bottom = "0";
+
+    heart.style.fontSize = "20px";
+
+    heart.style.animation =
+    "floatUp 4s linear";
+
+    heart.style.pointerEvents =
+    "none";
+
+    heart.style.zIndex = "999";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, 4000);
+
+}, 500);
+
+
+// mouse hearts
+
+let lastX = 0;
+let lastY = 0;
+
+document.addEventListener(
+"mousemove",
+function(e) {
+
+    const distance = Math.hypot(
+        e.clientX - lastX,
+        e.clientY - lastY
+    );
+
+    if (distance > 25) {
+
+        let spark =
+        document.createElement("div");
+
+        spark.innerHTML = "❤️";
+
+        spark.style.position = "fixed";
+
+        spark.style.left =
+        (e.clientX - 9) + "px";
+
+        spark.style.top =
+        (e.clientY - 12) + "px";
+
+        spark.style.pointerEvents =
+        "none";
+
+        spark.style.fontSize = "18px";
+
+        spark.style.opacity = "1";
+
+        spark.style.zIndex = "999";
+
+        spark.style.transition =
+        "all 0.8s linear";
+
+        document.body.appendChild(spark);
+
+        setTimeout(() => {
+
+            spark.style.transform =
+            "translateY(-20px)";
+
+            spark.style.opacity = "0";
+
+        }, 10);
+
+        setTimeout(() => {
+
+            spark.remove();
+
+        }, 800);
+
+        lastX = e.clientX;
+        lastY = e.clientY;
+    }
+
+});
+
+</script>
+
+</body>
+</html>
