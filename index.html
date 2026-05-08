@@ -27,6 +27,7 @@ body {
 }
 
 @keyframes gradient {
+
     0% {
         background-position: 0% 50%;
     }
@@ -41,6 +42,7 @@ body {
 }
 
 .card {
+
     background: rgba(255, 255, 255, 0.15);
 
     padding: 30px;
@@ -66,21 +68,25 @@ body {
 }
 
 h1 {
+
     font-size: 2.5em;
 
     margin-bottom: 15px;
 
-    text-shadow: 0 0 10px white,
-                 0 0 20px pink;
+    text-shadow:
+    0 0 10px white,
+    0 0 20px pink;
 }
 
 p {
+
     font-size: 1.1em;
 
     line-height: 1.6;
 }
 
 .love-img {
+
     width: 100%;
 
     max-width: 300px;
@@ -93,10 +99,12 @@ p {
 
     display: block;
 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.3);
 }
 
 .heart {
+
     font-size: 2em;
 
     animation: heartbeat 1s infinite;
@@ -298,11 +306,12 @@ function typeEffect() {
 typeEffect();
 
 
-// floating background hearts
+// floating hearts
 
 setInterval(() => {
 
-    let heart = document.createElement("div");
+    let heart =
+    document.createElement("div");
 
     heart.innerHTML = "❤️";
 
@@ -333,7 +342,7 @@ setInterval(() => {
 }, 500);
 
 
-// smooth mouse trail hearts
+// smooth cursor hearts
 
 let lastX = 0;
 let lastY = 0;
@@ -343,8 +352,8 @@ document.addEventListener(
 function(e) {
 
     const distance = Math.hypot(
-        e.pageX - lastX,
-        e.pageY - lastY
+        e.clientX - lastX,
+        e.clientY - lastY
     );
 
     // spacing between hearts
@@ -359,10 +368,10 @@ function(e) {
         spark.style.position = "fixed";
 
         spark.style.left =
-        e.pageX + "px";
+        (e.clientX - 9) + "px";
 
         spark.style.top =
-        e.pageY + "px";
+        (e.clientY - 12) + "px";
 
         spark.style.pointerEvents =
         "none";
@@ -393,14 +402,14 @@ function(e) {
 
         }, 800);
 
-        lastX = e.pageX;
-        lastY = e.pageY;
+        lastX = e.clientX;
+        lastY = e.clientY;
     }
 
 });
 
 
-// hidden love message
+// hidden message
 
 function showMessage() {
 
