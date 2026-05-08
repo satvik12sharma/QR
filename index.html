@@ -27,45 +27,68 @@ body {
 }
 
 @keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .card {
     background: rgba(255, 255, 255, 0.15);
+
     padding: 30px;
+
     border-radius: 25px;
+
     backdrop-filter: blur(12px);
+
     border: 1px solid rgba(255,255,255,0.3);
+
     box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 
     max-width: 420px;
     width: 100%;
 
     animation: fadeIn 2s ease-in-out;
+
     position: relative;
 
     margin: 40px 0;
+
+    z-index: 2;
 }
 
 h1 {
     font-size: 2.5em;
+
     margin-bottom: 15px;
-    text-shadow: 0 0 10px white, 0 0 20px pink;
+
+    text-shadow: 0 0 10px white,
+                 0 0 20px pink;
 }
 
 p {
     font-size: 1.1em;
+
     line-height: 1.6;
 }
 
 .love-img {
     width: 100%;
+
     max-width: 300px;
+
     height: auto;
 
     border-radius: 15px;
+
     margin: 15px auto;
 
     display: block;
@@ -75,10 +98,12 @@ p {
 
 .heart {
     font-size: 2em;
+
     animation: heartbeat 1s infinite;
 }
 
 @keyframes heartbeat {
+
     0%, 100% {
         transform: scale(1);
     }
@@ -89,6 +114,7 @@ p {
 }
 
 @keyframes fadeIn {
+
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -101,6 +127,7 @@ p {
 }
 
 @keyframes floatUp {
+
     from {
         transform: translateY(0);
         opacity: 1;
@@ -113,15 +140,19 @@ p {
 }
 
 button {
+
     padding: 10px 20px;
 
     border: none;
+
     border-radius: 12px;
 
     background: white;
+
     color: #ff4d6d;
 
     font-size: 16px;
+
     font-weight: bold;
 
     cursor: pointer;
@@ -132,26 +163,35 @@ button {
 }
 
 button:hover {
+
     transform: scale(1.08);
 }
 
 .button-container {
+
     position: relative;
+
     height: 120px;
+
     margin-top: 20px;
 }
 
 #noBtn {
+
     position: absolute;
+
     transition: transform 0.2s ease;
 }
 
 .final-text {
+
     margin-top: 20px;
+
     animation: glow 2s infinite alternate;
 }
 
 @keyframes glow {
+
     from {
         text-shadow: 0 0 10px white;
     }
@@ -167,7 +207,10 @@ button:hover {
 <body>
 
 <div class="card">
+
     <div class="heart">❤️</div>
+
+    <p id="message"></p>
 
     <h1>I Love You Sadhika</h1>
 
@@ -176,35 +219,50 @@ button:hover {
     <div class="heart">❤️</div>
 
     <p>
-        Every moment with you feels like magic ✨<br><br>
+        Every moment with you feels like magic ✨
+        <br><br>
 
-        Your smile is my peace, your presence is my happiness 💖<br><br>
+        Your smile is my peace,
+        your presence is my happiness 💖
+        <br><br>
 
-        No matter where life takes us,<br>
+        No matter where life takes us,
+        <br>
 
-        I will always hold your hand and choose you again and again ❤️<br><br>
+        I will always hold your hand
+        and choose you again and again ❤️
+        <br><br>
 
         Forever yours.
     </p>
 
-    <button onclick="showMessage()">Click me ❤️</button>
+    <button onclick="showMessage()">
+        Click me ❤️
+    </button>
 
     <p id="hidden" style="display:none;">
-        I love you till the moon and back my little princess 💖
+        I love you till the moon and back
+        my little princess 💖
     </p>
 
-    <h2>Will you stay with me forever? ❤️</h2>
+    <h2>
+        Will you stay with me forever? ❤️
+    </h2>
 
     <div class="button-container">
 
         <button id="yesBtn"
         onclick="alert('YAYYY ❤️')">
+
             Yes ❤️
+
         </button>
 
         <button id="noBtn"
         onmouseover="moveButton()">
+
             No 😭
+
         </button>
 
     </div>
@@ -219,14 +277,17 @@ button:hover {
 
 // typing effect
 
-let text = "Every moment with you feels like magic ✨";
+let text =
+"Every moment with you feels like magic ✨";
+
 let i = 0;
 
 function typeEffect() {
 
     if (i < text.length) {
 
-        document.getElementById("message").innerHTML += text.charAt(i);
+        document.getElementById("message")
+        .innerHTML += text.charAt(i);
 
         i++;
 
@@ -237,7 +298,7 @@ function typeEffect() {
 typeEffect();
 
 
-// floating hearts
+// floating background hearts
 
 setInterval(() => {
 
@@ -247,15 +308,19 @@ setInterval(() => {
 
     heart.style.position = "fixed";
 
-    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.left =
+    Math.random() * 100 + "vw";
 
     heart.style.bottom = "0";
 
     heart.style.fontSize = "20px";
 
-    heart.style.animation = "floatUp 4s linear";
+    heart.style.animation =
+    "floatUp 4s linear";
 
     heart.style.pointerEvents = "none";
+
+    heart.style.zIndex = "999";
 
     document.body.appendChild(heart);
 
@@ -273,38 +338,50 @@ setInterval(() => {
 let lastX = 0;
 let lastY = 0;
 
-document.addEventListener("mousemove", function(e) {
+document.addEventListener(
+"mousemove",
+function(e) {
 
     const distance = Math.hypot(
         e.pageX - lastX,
         e.pageY - lastY
     );
 
+    // spacing between hearts
+
     if (distance > 25) {
 
-        let spark = document.createElement("div");
+        let spark =
+        document.createElement("div");
 
         spark.innerHTML = "❤️";
 
         spark.style.position = "fixed";
 
-        spark.style.left = e.pageX + "px";
+        spark.style.left =
+        e.pageX + "px";
 
-        spark.style.top = e.pageY + "px";
+        spark.style.top =
+        e.pageY + "px";
 
-        spark.style.pointerEvents = "none";
+        spark.style.pointerEvents =
+        "none";
 
         spark.style.fontSize = "18px";
 
         spark.style.opacity = "1";
 
-        spark.style.transition = "all 0.8s linear";
+        spark.style.zIndex = "999";
+
+        spark.style.transition =
+        "all 0.8s linear";
 
         document.body.appendChild(spark);
 
         setTimeout(() => {
 
-            spark.style.transform = "translateY(-20px)";
+            spark.style.transform =
+            "translateY(-20px)";
 
             spark.style.opacity = "0";
 
@@ -327,26 +404,32 @@ document.addEventListener("mousemove", function(e) {
 
 function showMessage() {
 
-    document.getElementById("hidden").style.display = "block";
+    document.getElementById("hidden")
+    .style.display = "block";
 }
 
 
-// smarter moving no button
+// moving no button
 
 function moveButton() {
 
-    const noBtn = document.getElementById("noBtn");
+    const noBtn =
+    document.getElementById("noBtn");
 
     let x, y;
 
     do {
 
-        // generate random movement
         x = Math.random() * 180 - 90;
+
         y = Math.random() * 100 - 50;
 
-        // keep regenerating if movement too small
-    } while (Math.abs(x) < 60 && Math.abs(y) < 30);
+    }
+
+    while (
+        Math.abs(x) < 60 &&
+        Math.abs(y) < 30
+    );
 
     noBtn.style.transform =
     `translate(${x}px, ${y}px)`;
