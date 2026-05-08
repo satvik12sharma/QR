@@ -218,22 +218,49 @@ setInterval(() => {
 }, 500);
 
 // mouse sparkle hearts
+
+let lastX = 0;
+let lastY = 0;
+
 document.addEventListener("mousemove", function(e) {
 
-    let spark = document.createElement("div");
+    // distance between current and last sparkle
+    const distance = Math.hypot(e.pageX - lastX, e.pageY - lastY);
 
-    spark.innerHTML = "❤️";
-    spark.style.position = "fixed";
-    spark.style.left = e.pageX + "px";
-    spark.style.top = e.pageY + "px";
-    spark.style.pointerEvents = "none";
-    spark.style.fontSize = "18px";
+    // create sparkle only if mouse moved enough
+    if (distance > 25) {
 
-    document.body.appendChild(spark);
+        let spark = document.createElement("div");
 
-    setTimeout(() => spark.remove(), 500);
+        spark.innerHTML = "❤️";
+        spark.style.position = "fixed";
+        spark.style.left = e.pageX + "px";
+        spark.style.top = e.pageY + "px";
+        spark.style.pointerEvents = "none";
+        spark.style.fontSize = "18px";
+        spark.style.opacity = "1";
+        spark.style.transition = "all 0.8s linear";
+
+        document.body.appendChild(spark);
+
+        // smooth fade + float
+        setTimeout(() => {
+            spark.style.transform = "translateY(-20px)";
+            spark.style.opacity = "0";
+        }, 10);
+
+        // remove after animation
+        setTimeout(() => {
+            spark.remove();
+        }, 800);
+
+        // update last position
+        lastX = e.pageX;
+        lastY = e.pageY;
+    }
 
 });
+
 
 // hidden message
 function showMessage() {
