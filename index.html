@@ -143,6 +143,7 @@ button:hover {
 
 #noBtn {
     position: absolute;
+    transition: transform 0.2s ease;
 }
 
 .final-text {
@@ -282,7 +283,6 @@ document.addEventListener("mousemove", function(e) {
         e.pageY - lastY
     );
 
-    // spacing between hearts
     if (distance > 25) {
 
         let spark = document.createElement("div");
@@ -334,15 +334,22 @@ function showMessage() {
 }
 
 
-// moving no button nearby
+// smarter moving no button
 
 function moveButton() {
 
     const noBtn = document.getElementById("noBtn");
 
-    const x = Math.random() * 120 - 60;
+    let x, y;
 
-    const y = Math.random() * 40 - 20;
+    do {
+
+        // generate random movement
+        x = Math.random() * 180 - 90;
+        y = Math.random() * 100 - 50;
+
+        // keep regenerating if movement too small
+    } while (Math.abs(x) < 60 && Math.abs(y) < 30);
 
     noBtn.style.transform =
     `translate(${x}px, ${y}px)`;
