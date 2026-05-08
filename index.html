@@ -10,7 +10,6 @@ body {
     margin: 0;
     padding: 20px;
     font-family: 'Segoe UI', cursive;
-
     background: linear-gradient(-45deg, #ff758c, #ff7eb3, #ff4d6d, #ff8fa3);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
@@ -43,7 +42,7 @@ body {
 
 .card {
 
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255,255,255,0.15);
 
     padding: 30px;
 
@@ -58,13 +57,26 @@ body {
     max-width: 420px;
     width: 100%;
 
-    animation: fadeIn 2s ease-in-out;
-
     position: relative;
 
     margin: 40px 0;
 
     z-index: 2;
+
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 h1 {
@@ -112,38 +124,12 @@ p {
 
 @keyframes heartbeat {
 
-    0%, 100% {
+    0%,100% {
         transform: scale(1);
     }
 
     50% {
         transform: scale(1.3);
-    }
-}
-
-@keyframes fadeIn {
-
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes floatUp {
-
-    from {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    to {
-        transform: translateY(-100vh);
-        opacity: 0;
     }
 }
 
@@ -209,6 +195,19 @@ button:hover {
     }
 }
 
+@keyframes floatUp {
+
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
 </style>
 </head>
 
@@ -217,28 +216,18 @@ button:hover {
 <div class="card">
 
     <div class="heart">❤️</div>
-    <h2 id="loveMeter">Love Level: 0% ❤️</h2>
 
-<script>
-let love = 0;
+    <p id="message"></p>
 
-setInterval(() => {
-
-    if(love < 100){
-
-        love++;
-
-        document.getElementById("loveMeter")
-        .innerHTML =
-        "Love Level: " + love + "% ❤️";
-    }
-
-}, 40);
-</script>
+    <h2 id="loveMeter">
+        Love Level: 0% ❤️
+    </h2>
 
     <h1>I Love You Sadhika</h1>
 
-    <img src="love.jpeg" alt="Us ❤️" class="love-img">
+    <img src="love.jpeg"
+    alt="Us ❤️"
+    class="love-img">
 
     <div class="heart">❤️</div>
 
@@ -262,6 +251,10 @@ setInterval(() => {
 
     <button onclick="showMessage()">
         Click me ❤️
+    </button>
+
+    <button onclick="window.location.href='memories.html'">
+        Memories 📸
     </button>
 
     <p id="hidden" style="display:none;">
@@ -291,20 +284,63 @@ setInterval(() => {
 
     </div>
 
+    <button onclick="sendLove()">
+        Receive I Love You From Me 💌
+    </button>
+
     <h3 class="final-text">
         Made with infinite love ❤️
     </h3>
-    <!-- ADD THIS BUTTON below your "Click me ❤️" button -->
 
-<button onclick="window.location.href='memories.html'">
-    Memories 📸
-</button>
-<button onclick="sendLove()">
-    Receive I Love You From Me 💌
-</button>
 </div>
 
+<!-- EMAIL JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <script>
+
+emailjs.init("1Pqjd5TnNGB_5hUW0");
+
+function sendLove() {
+
+    emailjs.send(
+        "service_zk5yw2m",
+        "template_lcic4fc",
+        {
+            name: "Satvik",
+
+            email: "satviks080@gmail.com",
+
+            message:
+`My Dearest Sadhika ❤️
+
+Every moment with you feels warm, peaceful, and beautiful.
+Your smile makes even my worst days better, and your presence feels like home to me.
+
+No matter what happens in life, I will always care for you, support you, and choose you again and again.
+
+I love you more than words can ever explain ❤️
+
+Forever yours,
+Satvik`
+        }
+    )
+
+    .then(function() {
+
+        alert("Love message sent to Sadhika ❤️");
+
+    })
+
+    .catch(function(error) {
+
+        alert("Something went wrong 😭");
+
+        console.log(error);
+    });
+}
+
 
 // typing effect
 
@@ -329,7 +365,25 @@ function typeEffect() {
 typeEffect();
 
 
-// floating hearts
+// love meter
+
+let love = 0;
+
+setInterval(() => {
+
+    if (love < 100) {
+
+        love++;
+
+        document.getElementById("loveMeter")
+        .innerHTML =
+        "Love Level: " + love + "% ❤️";
+    }
+
+}, 40);
+
+
+// falling roses
 
 setInterval(() => {
 
@@ -345,12 +399,13 @@ setInterval(() => {
 
     heart.style.bottom = "0";
 
-    heart.style.fontSize = "20px";
+    heart.style.fontSize = "22px";
 
     heart.style.animation =
     "floatUp 4s linear";
 
-    heart.style.pointerEvents = "none";
+    heart.style.pointerEvents =
+    "none";
 
     heart.style.zIndex = "999";
 
@@ -365,7 +420,7 @@ setInterval(() => {
 }, 500);
 
 
-// smooth cursor hearts
+// cursor hearts
 
 let lastX = 0;
 let lastY = 0;
@@ -378,8 +433,6 @@ function(e) {
         e.clientX - lastX,
         e.clientY - lastY
     );
-
-    // spacing between hearts
 
     if (distance > 25) {
 
@@ -468,51 +521,6 @@ function moveButton() {
 }
 
 </script>
-<!-- EMAIL JS -->
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script>
-
-emailjs.init("1Pqjd5TnNGB_5hUW0");
-
-function sendLove() {
-
-    emailjs.send(
-        "service_zk5yw2m",
-        "template_lcic4fc",
-        {
-            name: "Satvik",
-            email: "satviks080@gmail.com",
-            message:
-`My Dearest Sadhika ❤️
-
-Every moment with you feels warm, peaceful, and beautiful.
-Your smile makes even my worst days better, and your presence feels like home to me.
-
-No matter what happens in life, I will always care for you, support you, and choose you again and again.
-
-I love you more than words can ever explain ❤️
-
-Forever yours,
-Satvik`
-        }
-    )
-
-    .then(function() {
-
-        alert("Love message sent to Sadhika ❤️");
-
-    })
-
-    .catch(function(error) {
-
-        alert("Something went wrong 😭");
-
-        console.log(error);
-    });
-}
-
-</script>
 </body>
 </html>
