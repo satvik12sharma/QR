@@ -92,6 +92,21 @@ h1 {
 
 </head>
 <script>
+document.addEventListener("mousemove", function(e) {
+    let spark = document.createElement("div");
+    spark.innerHTML = "✨";
+    spark.style.position = "fixed";
+    spark.style.left = e.pageX + "px";
+    spark.style.top = e.pageY + "px";
+    spark.style.pointerEvents = "none";
+    spark.style.fontSize = "18px";
+
+    document.body.appendChild(spark);
+
+    setTimeout(() => spark.remove(), 500);
+});
+</script>
+<script>
 setInterval(() => {
   let heart = document.createElement("div");
   heart.innerHTML = "❤️";
@@ -141,6 +156,21 @@ typeEffect();
 <p id="hidden" style="display:none;">
 I love you till the moon and back my little princess 💖
 </p>
+<h2>Will you stay with me forever? ❤️</h2>
+
+<button onclick="alert('YAYYY ❤️')">Yes</button>
+
+<button onmouseover="moveButton(this)">
+No
+</button>
+
+<script>
+function moveButton(btn){
+    btn.style.position = "absolute";
+    btn.style.left = Math.random()*80 + "vw";
+    btn.style.top = Math.random()*80 + "vh";
+}
+</script>
 
 <script>
 function showMessage() {
