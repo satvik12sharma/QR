@@ -5,20 +5,25 @@
 <title>For Sadhika ❤️</title>
 
 <style>
+
 body {
     margin: 0;
-    padding: 0;
+    padding: 20px;
     font-family: 'Segoe UI', cursive;
+
     background: linear-gradient(-45deg, #ff758c, #ff7eb3, #ff4d6d, #ff8fa3);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
+
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+
+    min-height: 100vh;
+    overflow-y: auto;
+
     text-align: center;
     color: white;
-    overflow: hidden;
 }
 
 @keyframes gradient {
@@ -34,9 +39,14 @@ body {
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255,255,255,0.3);
     box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+
     max-width: 420px;
+    width: 100%;
+
     animation: fadeIn 2s ease-in-out;
     position: relative;
+
+    margin: 40px 0;
 }
 
 h1 {
@@ -54,9 +64,12 @@ p {
     width: 100%;
     max-width: 300px;
     height: auto;
+
     border-radius: 15px;
     margin: 15px auto;
+
     display: block;
+
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
@@ -69,6 +82,7 @@ p {
     0%, 100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.3);
     }
@@ -79,6 +93,7 @@ p {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -90,6 +105,7 @@ p {
         transform: translateY(0);
         opacity: 1;
     }
+
     to {
         transform: translateY(-100vh);
         opacity: 0;
@@ -98,15 +114,21 @@ p {
 
 button {
     padding: 10px 20px;
+
     border: none;
     border-radius: 12px;
+
     background: white;
     color: #ff4d6d;
+
     font-size: 16px;
-    cursor: pointer;
-    margin: 10px;
-    transition: 0.3s;
     font-weight: bold;
+
+    cursor: pointer;
+
+    margin: 10px;
+
+    transition: 0.3s;
 }
 
 button:hover {
@@ -115,7 +137,7 @@ button:hover {
 
 .button-container {
     position: relative;
-    height: 100px;
+    height: 120px;
     margin-top: 20px;
 }
 
@@ -132,10 +154,12 @@ button:hover {
     from {
         text-shadow: 0 0 10px white;
     }
+
     to {
         text-shadow: 0 0 25px pink;
     }
 }
+
 </style>
 </head>
 
@@ -155,9 +179,13 @@ button:hover {
 
     <p>
         Every moment with you feels like magic ✨<br><br>
+
         Your smile is my peace, your presence is my happiness 💖<br><br>
+
         No matter where life takes us,<br>
+
         I will always hold your hand and choose you again and again ❤️<br><br>
+
         Forever yours.
     </p>
 
@@ -171,90 +199,126 @@ button:hover {
 
     <div class="button-container">
 
-        <button id="yesBtn" onclick="alert('YAYYY ❤️')">
+        <button id="yesBtn"
+        onclick="alert('YAYYY ❤️')">
             Yes ❤️
         </button>
 
-        <button id="noBtn" onmouseover="moveButton()">
+        <button id="noBtn"
+        onmouseover="moveButton()">
             No 😭
         </button>
 
     </div>
 
-    <h3 class="final-text">Made with infinite love ❤️</h3>
+    <h3 class="final-text">
+        Made with infinite love ❤️
+    </h3>
 
 </div>
 
 <script>
 
 // typing effect
+
 let text = "Every moment with you feels like magic ✨";
 let i = 0;
 
 function typeEffect() {
+
     if (i < text.length) {
+
         document.getElementById("message").innerHTML += text.charAt(i);
+
         i++;
+
         setTimeout(typeEffect, 50);
     }
 }
+
 typeEffect();
 
+
 // floating hearts
+
 setInterval(() => {
+
     let heart = document.createElement("div");
 
     heart.innerHTML = "❤️";
+
     heart.style.position = "fixed";
+
     heart.style.left = Math.random() * 100 + "vw";
+
     heart.style.bottom = "0";
+
     heart.style.fontSize = "20px";
+
     heart.style.animation = "floatUp 4s linear";
+
+    heart.style.pointerEvents = "none";
 
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 4000);
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, 4000);
 
 }, 500);
 
-// mouse sparkle hearts
+
+// smooth mouse trail hearts
 
 let lastX = 0;
 let lastY = 0;
 
 document.addEventListener("mousemove", function(e) {
 
-    // distance between current and last sparkle
-    const distance = Math.hypot(e.pageX - lastX, e.pageY - lastY);
+    const distance = Math.hypot(
+        e.pageX - lastX,
+        e.pageY - lastY
+    );
 
-    // create sparkle only if mouse moved enough
+    // spacing between hearts
     if (distance > 25) {
 
         let spark = document.createElement("div");
 
         spark.innerHTML = "❤️";
+
         spark.style.position = "fixed";
+
         spark.style.left = e.pageX + "px";
+
         spark.style.top = e.pageY + "px";
+
         spark.style.pointerEvents = "none";
+
         spark.style.fontSize = "18px";
+
         spark.style.opacity = "1";
+
         spark.style.transition = "all 0.8s linear";
 
         document.body.appendChild(spark);
 
-        // smooth fade + float
         setTimeout(() => {
+
             spark.style.transform = "translateY(-20px)";
+
             spark.style.opacity = "0";
+
         }, 10);
 
-        // remove after animation
         setTimeout(() => {
+
             spark.remove();
+
         }, 800);
 
-        // update last position
         lastX = e.pageX;
         lastY = e.pageY;
     }
@@ -262,20 +326,26 @@ document.addEventListener("mousemove", function(e) {
 });
 
 
-// hidden message
+// hidden love message
+
 function showMessage() {
+
     document.getElementById("hidden").style.display = "block";
 }
 
-// moving no button
+
+// moving no button nearby
+
 function moveButton() {
 
     const noBtn = document.getElementById("noBtn");
 
     const x = Math.random() * 120 - 60;
+
     const y = Math.random() * 40 - 20;
 
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    noBtn.style.transform =
+    `translate(${x}px, ${y}px)`;
 }
 
 </script>
