@@ -217,6 +217,24 @@ button:hover {
 <div class="card">
 
     <div class="heart">❤️</div>
+    <h2 id="loveMeter">Love Level: 0% ❤️</h2>
+
+<script>
+let love = 0;
+
+setInterval(() => {
+
+    if(love < 100){
+
+        love++;
+
+        document.getElementById("loveMeter")
+        .innerHTML =
+        "Love Level: " + love + "% ❤️";
+    }
+
+}, 40);
+</script>
 
     <h1>I Love You Sadhika</h1>
 
