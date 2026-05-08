@@ -283,7 +283,9 @@ button:hover {
 <button onclick="window.location.href='memories.html'">
     Memories 📸
 </button>
-
+<button onclick="sendLove()">
+    Receive I Love You From Me 💌
+</button>
 </div>
 
 <script>
@@ -450,6 +452,51 @@ function moveButton() {
 }
 
 </script>
+<!-- EMAIL JS -->
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+
+emailjs.init("1Pqjd5TnNGB_5hUW0");
+
+function sendLove() {
+
+    emailjs.send(
+        "service_zk5yw2m",
+        "template_lcic4fc",
+        {
+            name: "Satvik",
+            email: "satviks080@gmail.com",
+            message:
+`My Dearest Sadhika ❤️
+
+Every moment with you feels warm, peaceful, and beautiful.
+Your smile makes even my worst days better, and your presence feels like home to me.
+
+No matter what happens in life, I will always care for you, support you, and choose you again and again.
+
+I love you more than words can ever explain ❤️
+
+Forever yours,
+Satvik`
+        }
+    )
+
+    .then(function() {
+
+        alert("Love message sent to Sadhika ❤️");
+
+    })
+
+    .catch(function(error) {
+
+        alert("Something went wrong 😭");
+
+        console.log(error);
+    });
+}
+
+</script>
 </body>
 </html>
